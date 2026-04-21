@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Details | Hari Reshmi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #060b19;
+        --fg: #e7eeff;
+        --muted: #9cadcf;
+        --accent: #4fc3ff;
+        --accent2: #58f3c3;
+        --card: #0d162d;
+        --border: rgba(153, 179, 241, 0.28);
+        --display: "Syne", sans-serif;
+        --mono: "Space Mono", monospace;
+        --body: "DM Sans", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--body);
+        color: var(--fg);
+        background:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(79, 195, 255, 0.2),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 88% 18%,
+            rgba(88, 243, 195, 0.14),
+            transparent 30%
+          ),
+          linear-gradient(180deg, #040817 0%, #071127 100%);
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 1.2rem 4rem;
+      }
+      .back {
+        display: inline-flex;
+        text-decoration: none;
+        color: var(--accent);
+        font-family: var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        margin-bottom: 1.5rem;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 1.2rem;
+        margin-bottom: 1.2rem;
+      }
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.1rem;
+      }
+      h1 {
+        margin: 0 0 0.5rem;
+        font-family: var(--display);
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+      .role {
+        color: var(--accent2);
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.8rem;
+      }
+      .summary {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      .btns {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: 1rem;
+      }
+      .btn {
+        text-decoration: none;
+        font-family: var(--mono);
+        font-size: 0.67rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--border);
+        color: var(--fg);
+        border-radius: 4px;
+      }
+      .btn.primary {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      .hero img {
+        width: 100%;
+        height: 100%;
+        min-height: 280px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.9rem;
+      }
+      .chip {
+        border: 1px solid var(--border);
+        color: var(--muted);
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        font-family: var(--mono);
+        font-size: 0.65rem;
+      }
+      .readme {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.2rem;
+      }
+      .readme h1,
+      .readme h2,
+      .readme h3 {
+        font-family: var(--display);
+        margin: 1rem 0 0.6rem;
+      }
+      .readme h1 {
+        font-size: 1.5rem;
+      }
+      .readme h2 {
+        font-size: 1.2rem;
+      }
+      .readme h3 {
+        font-size: 1rem;
+      }
+      .readme p,
+      .readme li {
+        color: #c7d5f3;
+        line-height: 1.8;
+      }
+      .readme pre {
+        background: #081125;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        overflow-x: auto;
+        padding: 0.85rem;
+      }
+      .readme code {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+      }
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="back" href="index.html#projects">← Back to Projects</a>
+      <section class="hero">
+        <div class="panel">
+          <h1 id="projectTitle">Loading...</h1>
+          <div class="role" id="projectRole"></div>
+          <p class="summary" id="projectSummary"></p>
+          <div class="chips" id="stackWrap"></div>
+          <div class="btns">
+            <a
+              class="btn primary"
+              id="liveBtn"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Live Site</a
+            >
+            <a
+              class="btn"
+              id="codeBtn"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Code</a
+            >
+          </div>
+        </div>
+        <div class="panel">
+          <img
+            id="projectImage"
+            src="assets/previews/pandit-ji-collection-store.svg"
+            alt="Project preview"
+          />
+        </div>
+      </section>
+
+      <section class="readme">
+        <div id="readmeContent"></div>
+      </section>
+    </div>
+
+    <script src="projects-data.js"></script>
+    <script src="project.js"></script>
+  </body>
+</html>

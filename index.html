@@ -45,7 +45,23 @@
         padding: 0;
       }
       html {
-        scroll-behavior: smooth;
+        scroll-behavior: auto;
+      }
+      html.lenis,
+      html.lenis body {
+        height: auto;
+      }
+      .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+      }
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
+      .lenis.lenis-stopped {
+        overflow: hidden;
+      }
+      .lenis.lenis-scrolling iframe {
+        pointer-events: none;
       }
       body {
         background:
@@ -2326,6 +2342,7 @@
     </footer>
 
     <script src="projects-data.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
     <script>
       const cursor = document.getElementById("cursor");
       document.addEventListener("mousemove", (e) => {
@@ -2336,6 +2353,23 @@
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+
+      let lenis = null;
+      if (!prefersReducedMotion && typeof window.Lenis === "function") {
+        lenis = new window.Lenis({
+          duration: 1.5,
+          smoothWheel: true,
+          wheelMultiplier: 0.65,
+          touchMultiplier: 1,
+          easing: (t) => 1 - Math.pow(1 - t, 4),
+        });
+
+        const raf = (time) => {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        };
+        requestAnimationFrame(raf);
+      }
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -2440,23 +2474,16 @@
         timeline.style.setProperty("--timeline-progress", progress.toFixed(3));
       }
 
-      function smoothScrollTo(targetY, duration = 700) {
-        const startY = window.scrollY;
-        const distance = targetY - startY;
-        const startTime = performance.now();
-        const easeInOutCubic = (t) =>
-          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      function smoothScrollTo(targetY, duration = 980) {
+        if (lenis) {
+          lenis.scrollTo(targetY, {
+            duration: duration / 1000,
+            easing: (t) => 1 - Math.pow(1 - t, 4),
+          });
+          return;
+        }
 
-        const step = (currentTime) => {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          window.scrollTo(0, startY + distance * easeInOutCubic(progress));
-          if (progress < 1) {
-            requestAnimationFrame(step);
-          }
-        };
-
-        requestAnimationFrame(step);
+        window.scrollTo({ top: targetY, behavior: "smooth" });
       }
 
       if (!prefersReducedMotion) {
@@ -2507,7 +2534,11 @@
           });
         };
 
-        window.addEventListener("scroll", onScroll, { passive: true });
+        if (lenis) {
+          lenis.on("scroll", onScroll);
+        } else {
+          window.addEventListener("scroll", onScroll, { passive: true });
+        }
         window.addEventListener("resize", onScroll);
         updateParallax();
         updateTopProgress();

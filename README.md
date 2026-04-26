@@ -74,8 +74,8 @@ After you add images, use this style:
 ```md
 ## Screenshots
 
-![Hero Section](assets/screenshots/home-hero.png)
-![Projects Section](assets/screenshots/projects-section.png)
+<img width="1904" height="880" alt="image" src="https://github.com/user-attachments/assets/463ac459-6f41-49b3-aa0a-afb08ae358a7" />
+
 ```
 
 ## Notes

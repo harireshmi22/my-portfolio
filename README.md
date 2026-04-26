@@ -34,39 +34,6 @@ This is a static project, so you can run it in either way:
 1. Open `index.html` directly in your browser.
 2. Or run with VS Code Live Server for a better development workflow.
 
-## How To Add Project Screenshots In README
-
-Store screenshots in `assets/screenshots/` and reference them with relative paths.
-
-### Step 1: Capture and Save Screenshot
-
-- Take a screenshot of your project.
-- Save it as PNG or JPG inside `assets/screenshots/`.
-- Example filename: `home-hero.png`
-
-### Step 2: Add Image In Markdown
-
-Use this format in README:
-
-```md
-![Portfolio Home](assets/screenshots/home-hero.png)
-```
-
-### Step 3: Control Display Size (Optional)
-
-If you want smaller width:
-
-```html
-<img src="assets/screenshots/home-hero.png" alt="Portfolio Home" width="900" />
-```
-
-## Quick Paste Workflow (Recommended)
-
-1. Open the folder `assets/screenshots/` in VS Code Explorer.
-2. Paste your screenshot there (Ctrl + V) or drag-drop image files.
-3. Add markdown image line in this README.
-4. Commit both the README update and image file.
-
 ## Screenshots
 
 ![Portfolio Screenshot](assets/image.png)

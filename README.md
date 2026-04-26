@@ -73,14 +73,12 @@ After you add images, use this style:
 
 ```md
 ## Screenshots
-<<<<<<< HEAD
-![alt text](image.png)
-=======
-
-<img width="1904" height="880" alt="image" src="https://github.com/user-attachments/assets/463ac459-6f41-49b3-aa0a-afb08ae358a7" />
-
->>>>>>> fad949fa68eb7205febc6d386056ef1811346cd4
+![Portfolio Screenshot](assets/image.png)
 ```
+
+## Screenshots
+
+![Portfolio Screenshot](assets/image.png)
 
 ## Notes
 

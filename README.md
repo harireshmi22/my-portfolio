@@ -73,9 +73,7 @@ After you add images, use this style:
 
 ```md
 ## Screenshots
-
-![Hero Section](assets/screenshots/home-hero.png)
-![Projects Section](assets/screenshots/projects-section.png)
+![alt text](image.png)
 ```
 
 ## Notes

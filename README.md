@@ -1,4 +1,4 @@
-# Hari Portfolio 2
+# Hari Portfolio 
 
 A modern personal portfolio website with smooth scrolling, animated sections, project highlights, and a dedicated project details page.
 

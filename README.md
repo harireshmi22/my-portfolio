@@ -67,15 +67,6 @@ If you want smaller width:
 3. Add markdown image line in this README.
 4. Commit both the README update and image file.
 
-## Example Gallery
-
-After you add images, use this style:
-
-```md
-## Screenshots
-![Portfolio Screenshot](assets/image.png)
-```
-
 ## Screenshots
 
 ![Portfolio Screenshot](assets/image.png)
